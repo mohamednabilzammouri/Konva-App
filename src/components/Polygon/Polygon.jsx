@@ -11,10 +11,11 @@ function Polygon(props) {
     handleMouseOutStartPoint,
     handleDragMovePoint,
   } = props.polygonData;
+
   return (
     <Stage
-      width={window.innerWidth}
-      height={window.innerHeight}
+      //   width={container.offsetWidth}
+      //   height={container.offsetHeight}
       onMouseDown={handleClick}
       onMouseMove={handleMouseMove}
     >

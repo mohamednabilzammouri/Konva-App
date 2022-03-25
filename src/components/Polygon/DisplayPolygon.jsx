@@ -1,9 +1,7 @@
-import React from "react";
-import { POLYGON_INITIAL_STATE } from "../../Constants/Constants";
 import usePolygon from "../../Hooks/usePolygon";
 import Polygon from "./Polygon";
 
-function DisplayPolygon(props) {
+function DisplayPolygon() {
   const {
     flattenedPoints,
     polygon,
@@ -13,7 +11,7 @@ function DisplayPolygon(props) {
     handleMouseOutStartPoint,
     handleDragMovePoint,
     handleSavePolygon,
-  } = usePolygon(props.PolygonToDisplay);
+  } = usePolygon();
   return (
     <Polygon
       polygonData={{
@@ -29,6 +27,5 @@ function DisplayPolygon(props) {
     />
   );
 }
-DisplayPolygon.defaultProps = POLYGON_INITIAL_STATE;
 
 export default DisplayPolygon;
