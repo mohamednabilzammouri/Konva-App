@@ -4,10 +4,6 @@ import { Polygon } from "../../../../Types/Types";
 import PolygonCard from "../PolygonCard/PolygonCard";
 import { StyledPolygons } from "./DIsplayPolygonCardsStyle";
 
-interface PolygonCardProps {
-  polygons: Polygon[];
-}
-
 function DisplayPolygonCards() {
   const { polygons } = useContext(MyPolygonsContext);
 

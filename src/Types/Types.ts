@@ -1,9 +1,10 @@
 
 export type Polygon = {
-    points?:number[][],
+    id:number,
+    points?:any,
     curMousePos?: number[],
-    isMouseOverStartPoint?: Boolean,
-    isFinished?:Boolean,
+    isMouseOverStartPoint?: boolean,
+    isFinished?:boolean,
     name?:string,
     dateTime?:string
 }

@@ -4,8 +4,13 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { StyledPolygonCard } from "./PolygonCardStyle";
+import { Polygon } from "../../../../Types/Types";
 
-export default function PolygonCard(props) {
+interface PolygonCardProps {
+  Mypolygon: Polygon;
+}
+
+export default function PolygonCard(props: PolygonCardProps): JSX.Element {
   return (
     <StyledPolygonCard>
       <CardMedia

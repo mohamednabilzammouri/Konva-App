@@ -1,11 +1,11 @@
 import { Button } from "@material-ui/core";
 import { useContext } from "react";
-
-import usePolygon from "../../Hooks/usePolygon";
-import Polygon from "./Polygon";
 import { MyPolygonsContext } from "../../Context/Context";
 
-function DisplayPolygon() {
+import usePolygon from "../../Hooks/usePolygon";
+import DrawPolygon from "./Polygon";
+
+function DisplayPolygon(): JSX.Element {
   const {
     flattenedPoints,
     polygon,
@@ -46,12 +46,15 @@ function DisplayPolygon() {
             backgroundColor: "green",
             margin: "1em",
           }}
-          onClick={() => savePolygon(polygon)}
+          onClick={() => {
+            savePolygon(polygon);
+            resetPolygon();
+          }}
         >
           Save
         </Button>
       </div>
-      <Polygon
+      <DrawPolygon
         polygonData={{
           flattenedPoints,
           polygon,

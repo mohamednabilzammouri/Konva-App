@@ -1,7 +1,21 @@
 import { Layer, Line, Stage } from "react-konva";
+import { Polygon } from "../../Types/Types";
 import DisplayRect from "../Konva/DisplayRect";
 
-function Polygon(props) {
+interface PlygonProps {
+  polygonData: {
+    flattenedPoints: any;
+    polygon: Polygon;
+    handleMouseOverStartPoint: any;
+    handleMouseMove: any;
+    handleClick: any;
+    handleMouseOutStartPoint: any;
+    handleDragMovePoint: any;
+    handleSavePolygon: any;
+  };
+}
+
+function DrawPolygon(props: PlygonProps): JSX.Element {
   const {
     flattenedPoints,
     polygon,
@@ -41,4 +55,4 @@ function Polygon(props) {
   );
 }
 
-export default Polygon;
+export default DrawPolygon;

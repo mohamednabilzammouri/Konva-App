@@ -1,28 +1,20 @@
 import { useState } from "react";
 import { POLYGON_INITIAL_STATE } from "../Constants/Constants";
+import { Polygon } from "../Types/Types";
 
-function usePolygon(CurrentPolygon = POLYGON_INITIAL_STATE) {
-  const [polygon, setPolygon] = useState(CurrentPolygon);
+function usePolygon(CurrentPolygon: Polygon = POLYGON_INITIAL_STATE) {
+  const [polygon, setPolygon] = useState<Polygon>(CurrentPolygon);
 
   const resetPolygon = () => {
     setPolygon(POLYGON_INITIAL_STATE);
   };
 
-  const savePolygon = () => {
-    if (polygon.points.length > 1) {
-      alert("saved");
-      resetPolygon();
-      return;
-    }
-    alert("You must set a minimum of two points to save your polygon");
-  };
-
-  const getMousePosition = (stage) => {
+  const getMousePosition = (stage: any) => {
     const { x, y } = stage.getPointerPosition();
     return [x, y];
   };
 
-  const handleClick = (event) => {
+  const handleClick = (event: any) => {
     const stage = event.target.getStage();
     const mousePos = getMousePosition(stage);
     if (polygon.isFinished) return;
@@ -34,24 +26,24 @@ function usePolygon(CurrentPolygon = POLYGON_INITIAL_STATE) {
     setPolygon({ ...polygon, points: [...polygon.points, mousePos] });
   };
 
-  const handleMouseMove = (event) => {
+  const handleMouseMove = (event: any) => {
     const stage = event.target.getStage();
     const mousePos = getMousePosition(stage);
     setPolygon({ ...polygon, curMousePos: mousePos });
   };
 
-  const handleMouseOverStartPoint = (event) => {
+  const handleMouseOverStartPoint = (event: any) => {
     if (polygon.isFinished || polygon.points.length < 3) return;
     event.target.scale({ x: 2, y: 2 });
     setPolygon({ ...polygon, isMouseOverStartPoint: true });
   };
 
-  const handleMouseOutStartPoint = (event) => {
+  const handleMouseOutStartPoint = (event: any) => {
     event.target.scale({ x: 1, y: 1 });
     setPolygon({ ...polygon, isMouseOverStartPoint: false });
   };
 
-  const handleDragMovePoint = (event) => {
+  const handleDragMovePoint = (event: any) => {
     const points = polygon.points;
     const index = event.target.index - 1;
     const pos = [event.target.attrs.x, event.target.attrs.y];
@@ -63,7 +55,7 @@ function usePolygon(CurrentPolygon = POLYGON_INITIAL_STATE) {
 
   const flattenedPoints = polygon.points
     .concat(polygon.isFinished ? [] : polygon.curMousePos)
-    .reduce((a, b) => a.concat(b), []);
+    .reduce((a: any, b: any) => a.concat(b), []);
 
   const handleSavePolygon = () => {};
 
@@ -77,7 +69,6 @@ function usePolygon(CurrentPolygon = POLYGON_INITIAL_STATE) {
     handleDragMovePoint,
     handleSavePolygon,
     resetPolygon,
-    savePolygon,
   };
 }
 

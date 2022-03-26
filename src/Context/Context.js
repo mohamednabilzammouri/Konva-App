@@ -8,7 +8,7 @@ export function MyPolygonsContextProvider(props) {
   const savePolygon = (poly) => {
     if (poly.points.length > 1) {
       setPolygons([...polygons, poly]);
-      alert(polygons.length);
+      console.log(typeof polygons);
       return;
     }
     alert("nein");
