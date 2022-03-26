@@ -16,13 +16,15 @@ export default function PolygonCard(props: PolygonCardProps): JSX.Element {
     Year + "/" + Month + "/" + Day + "/" + Hour + ":" + Minutes;
   return (
     <StyledPolygonCard>
-      <CardMedia
-        component="img"
-        image="https://mui.com/static/images/cards/contemplative-reptile.jpg"
-      />
+      <CardMedia component="img" image={props.Mypolygon.image} />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          <h3>ID : {props.Mypolygon.id}</h3>
+          <h3>
+            ID : {props.Mypolygon.id}{" "}
+            <span>
+              {props.Mypolygon.isFinished ? "Finished" : "Unfinished"}
+            </span>
+          </h3>
         </Typography>
         <Typography variant="body2" color="text.secondary">
           <h3>Last Updated : {CreationDate}</h3>

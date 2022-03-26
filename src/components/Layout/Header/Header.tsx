@@ -2,6 +2,7 @@ import { Button } from "@material-ui/core";
 import { Link, BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function Header() {
+  console.log("header rendered");
   return (
     <div className="header">
       <Link to="/">
