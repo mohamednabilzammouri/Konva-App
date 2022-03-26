@@ -1,3 +1,4 @@
+import React from "react";
 import { Layer, Line, Stage } from "react-konva";
 import { Polygon } from "../../Types/Types";
 import DisplayRect from "../Konva/DisplayRect";
@@ -11,11 +12,13 @@ interface PlygonProps {
     handleClick: any;
     handleMouseOutStartPoint: any;
     handleDragMovePoint: any;
-    handleSavePolygon: any;
   };
 }
 
 function DrawPolygon(props: PlygonProps): JSX.Element {
+  const stageRef = React.useRef(null);
+  console.log();
+
   const {
     flattenedPoints,
     polygon,
@@ -25,7 +28,6 @@ function DrawPolygon(props: PlygonProps): JSX.Element {
     handleMouseOutStartPoint,
     handleDragMovePoint,
   } = props.polygonData;
-
   return (
     <div className="background">
       <Stage
@@ -33,6 +35,7 @@ function DrawPolygon(props: PlygonProps): JSX.Element {
         height={window.innerHeight * 0.85}
         onMouseDown={handleClick}
         onMouseMove={handleMouseMove}
+        ref={stageRef}
       >
         <Layer>
           <Line

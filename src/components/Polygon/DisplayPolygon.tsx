@@ -14,7 +14,6 @@ function DisplayPolygon(): JSX.Element {
     handleClick,
     handleMouseOutStartPoint,
     handleDragMovePoint,
-    handleSavePolygon,
     resetPolygon,
   } = usePolygon();
 
@@ -63,7 +62,6 @@ function DisplayPolygon(): JSX.Element {
           handleClick,
           handleMouseOutStartPoint,
           handleDragMovePoint,
-          handleSavePolygon,
         }}
       />
     </>

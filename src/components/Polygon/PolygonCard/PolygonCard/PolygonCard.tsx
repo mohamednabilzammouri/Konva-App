@@ -25,7 +25,7 @@ export default function PolygonCard(props: PolygonCardProps): JSX.Element {
           <h3>ID : {props.Mypolygon.id}</h3>
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          <h3>Creation Date : {CreationDate}</h3>
+          <h3>Last Updated : {CreationDate}</h3>
         </Typography>
       </CardContent>
       <CardActions>

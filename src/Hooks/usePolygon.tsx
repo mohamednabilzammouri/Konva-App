@@ -13,6 +13,9 @@ function usePolygon(CurrentPolygon: Polygon = POLYGON_INITIAL_STATE) {
     const { x, y } = stage.getPointerPosition();
     return [x, y];
   };
+  const getRef = (stage: any) => {
+    return stage.ref;
+  };
 
   const handleClick = (event: any) => {
     const stage = event.target.getStage();
@@ -69,6 +72,7 @@ function usePolygon(CurrentPolygon: Polygon = POLYGON_INITIAL_STATE) {
     handleDragMovePoint,
     handleSavePolygon,
     resetPolygon,
+    getRef,
   };
 }
 
