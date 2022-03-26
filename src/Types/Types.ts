@@ -6,5 +6,5 @@ export type Polygon = {
     isMouseOverStartPoint?: boolean,
     isFinished?:boolean,
     name?:string,
-    dateTime?:string
+    dateTime?:any
 }

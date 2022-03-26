@@ -13,7 +13,9 @@ export function MyPolygonsContextProvider(props: any) {
 
   const savePolygon = (poly: Polygon) => {
     if (poly.points.length > 1) {
+      poly.id = polygons.length + 1;
       setPolygons([...polygons, poly]);
+      alert(poly.id);
       return;
     }
     alert("nein");
