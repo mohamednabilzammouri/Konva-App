@@ -5,10 +5,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { StyledPolygonCard } from "./PolygonCardStyle";
 import { Polygon } from "../../../../Types/Types";
-
-interface PolygonCardProps {
-  polygon: Polygon;
-}
+import { useContext } from "react";
 
 export default function PolygonCard(): JSX.Element {
   return (

@@ -1,4 +1,3 @@
-import { Button } from "@material-ui/core";
 import { Layer, Line, Stage } from "react-konva";
 import DisplayRect from "../Konva/DisplayRect";
 
@@ -15,28 +14,6 @@ function Polygon(props) {
 
   return (
     <div className="background">
-      <div style={{ borderBottom: "2px dashed red" }}>
-        <Button
-          variant="outlined"
-          style={{
-            color: "white",
-            backgroundColor: "red",
-            margin: "1em",
-          }}
-        >
-          Reset
-        </Button>
-        <Button
-          variant="outlined"
-          style={{
-            color: "white",
-            backgroundColor: "green",
-            margin: "1em",
-          }}
-        >
-          Save
-        </Button>
-      </div>
       <Stage
         width={window.innerWidth}
         height={window.innerHeight * 0.85}

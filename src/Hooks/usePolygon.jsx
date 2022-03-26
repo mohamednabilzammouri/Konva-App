@@ -4,6 +4,19 @@ import { POLYGON_INITIAL_STATE } from "../Constants/Constants";
 function usePolygon(CurrentPolygon = POLYGON_INITIAL_STATE) {
   const [polygon, setPolygon] = useState(CurrentPolygon);
 
+  const resetPolygon = () => {
+    setPolygon(POLYGON_INITIAL_STATE);
+  };
+
+  const savePolygon = () => {
+    if (polygon.points.length > 1) {
+      alert("saved");
+      resetPolygon();
+      return;
+    }
+    alert("You must set a minimum of two points to save your polygon");
+  };
+
   const getMousePosition = (stage) => {
     const { x, y } = stage.getPointerPosition();
     return [x, y];
@@ -63,6 +76,8 @@ function usePolygon(CurrentPolygon = POLYGON_INITIAL_STATE) {
     handleMouseOutStartPoint,
     handleDragMovePoint,
     handleSavePolygon,
+    resetPolygon,
+    savePolygon,
   };
 }
 
