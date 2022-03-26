@@ -5,7 +5,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { StyledPolygonCard } from "./PolygonCardStyle";
 
-export default function PolygonCard(): JSX.Element {
+export default function PolygonCard(props) {
   return (
     <StyledPolygonCard>
       <CardMedia
@@ -14,10 +14,10 @@ export default function PolygonCard(): JSX.Element {
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          aaa
+          {props.Mypolygon.points}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          aaaaa
+          {props.Mypolygon.points}
         </Typography>
       </CardContent>
       <CardActions>

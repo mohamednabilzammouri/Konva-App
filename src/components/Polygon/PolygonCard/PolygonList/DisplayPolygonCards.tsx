@@ -10,13 +10,12 @@ interface PolygonCardProps {
 
 function DisplayPolygonCards() {
   const { polygons } = useContext(MyPolygonsContext);
-  console.log(polygons);
 
   return (
     <StyledPolygons>
-      {polygons.map(() => {
-        <>aaaaaaaaa</>;
-      })}
+      {polygons.map((polygon: Polygon) => (
+        <PolygonCard Mypolygon={polygon} />
+      ))}
     </StyledPolygons>
   );
 }
