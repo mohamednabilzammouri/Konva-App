@@ -11,7 +11,10 @@ function Header() {
       <div className="icon" onClick={toggleSidebar}>
         {currentStatus ? <ChevronLeftIcon /> : <MenuIcon />}
       </div>
-      <div className="header-title">Header</div>
+      <img
+        src="https://hasty.ai/assets/images/hasty-logo.svg"
+        className="header-title"
+      ></img>
     </div>
   );
 }
