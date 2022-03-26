@@ -9,7 +9,7 @@ function DisplayPolygonCards() {
 
   return (
     <StyledPolygons>
-      {polygons.map((polygon: Polygon) => (
+      {polygons?.map((polygon: Polygon) => (
         <PolygonCard Mypolygon={polygon} />
       ))}
     </StyledPolygons>
