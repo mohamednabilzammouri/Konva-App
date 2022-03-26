@@ -1,3 +1,3 @@
-import { createContext, useState } from "react";
+import { createContext } from "react";
 
 export const LayoutContext = createContext(false);
