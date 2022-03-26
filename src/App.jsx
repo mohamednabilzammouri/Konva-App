@@ -1,19 +1,18 @@
-import { Link, Routes, BrowserRouter as Router, Route } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Routes, BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 import Footer from "./components/Layout/Footer/Footer";
 import Header from "./components/Layout/Header/Header";
 import DisplayPolygon from "./components/Polygon/DisplayPolygon";
-import PolygonCard from "./components/Polygon/PolygonCard/PolygonCard/PolygonCard";
 import DisplayPolygonCards from "./components/Polygon/PolygonCard/PolygonList/DisplayPolygonCards";
 import { MyPolygonsContextProvider } from "./Context/Context";
 
 function App() {
   return (
     <>
-      {" "}
       <MyPolygonsContextProvider>
-        <Header />
         <Router>
+          <Header />
           <Routes>
             <Route
               exact

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { MyPolygonsContext } from "../../../../Context/Context";
 import { Polygon } from "../../../../Types/Types";
 import PolygonCard from "../PolygonCard/PolygonCard";
 import { StyledPolygons } from "./DIsplayPolygonCardsStyle";
@@ -8,22 +9,14 @@ interface PolygonCardProps {
 }
 
 function DisplayPolygonCards() {
+  const { polygons } = useContext(MyPolygonsContext);
+  console.log(polygons);
+
   return (
     <StyledPolygons>
-      <PolygonCard />
-      <PolygonCard />
-      <PolygonCard />
-      <PolygonCard />
-      <PolygonCard />
-      <PolygonCard />
-      <PolygonCard />
-      <PolygonCard />
-      <PolygonCard />
-      <PolygonCard />
-      <PolygonCard />
-      <PolygonCard />
-      <PolygonCard />
-      <PolygonCard />
+      {polygons.map(() => {
+        <>aaaaaaaaa</>;
+      })}
     </StyledPolygons>
   );
 }
