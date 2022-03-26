@@ -3,14 +3,18 @@
   display: flex;
   flex-direction: column;
   color: #000133;
-  width: 100vw;
-  height: 100vh;
+}
+html {
+  height: 100%;
+  margin: 0;
+  border: 0;
+  padding: 0;
 }
 
 .header,
 .footer {
   background: #00022e;
-  height: 50px;
+  height: 7%;
   color: #fc86aa;
 }
 
@@ -26,21 +30,30 @@
 .drawer {
   background: #d8dcd6;
   width: 0px;
-  transition: width 0.3s;
 }
 
 .opened {
   width: 20%;
-  transition: width 0.3s;
 }
-.header,
-.footer {
+.header {
   display: flex;
   background: #191a21;
-  height: 50px;
+  height: 8vh;
   align-items: center;
   justify-content: center;
   color: white;
+}
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: #191a21;
+  color: white;
+  height: 7vh;
 }
 
 .icon {

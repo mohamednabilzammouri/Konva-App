@@ -1,20 +1,15 @@
 import "./App.css";
-import Container from "./components/Layout/Container/Container";
 import Footer from "./components/Layout/Footer/Footer";
 import Header from "./components/Layout/Header/Header";
-import { LayoutContext } from "./Context/Context";
-import useToggleSidebar from "./Hooks/useToggleSidebar";
+import DisplayPolygon from "./components/Polygon/DisplayPolygon";
 
 function App() {
-  const { currentStatus, toggleSidebar } = useToggleSidebar();
   return (
-    <LayoutContext.Provider value={{ currentStatus, toggleSidebar }}>
-      <div className="App">
-        <Header />
-        <Container />
-        <Footer />
-      </div>
-    </LayoutContext.Provider>
+    <div className="app">
+      <Header />
+      <DisplayPolygon />
+      <Footer />
+    </div>
   );
 }
 export default App;

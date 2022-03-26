@@ -4,10 +4,6 @@ import { LayoutContext } from "../../Context/Context";
 import DisplayRect from "../Konva/DisplayRect";
 
 function Polygon(props) {
-  const [width, setWidth] = useState();
-  const [height, setHeight] = useState();
-  const { currentStatus } = useContext(LayoutContext);
-
   const {
     flattenedPoints,
     polygon,
@@ -18,16 +14,10 @@ function Polygon(props) {
     handleDragMovePoint,
   } = props.polygonData;
 
-  useEffect(() => {
-    setWidth(document.getElementsByClassName("main")[0].clientHeight);
-    setHeight(document.getElementsByClassName("main")[0].clientHeight);
-    console.log([width, height, currentStatus]);
-  }, [width, height, currentStatus]);
-
   return (
     <Stage
-      width={width}
-      height={height}
+      width={window.innerWidth}
+      height={window.innerHeight * 0.85}
       onMouseDown={handleClick}
       onMouseMove={handleMouseMove}
     >
