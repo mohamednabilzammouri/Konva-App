@@ -6,13 +6,13 @@ import { Input } from "@material-ui/core";
 import { StyledPolygonCard } from "../Polygon/PolygonCard/PolygonCard/PolygonCardStyle";
 import { MyPolygonsContext } from "../../Context/Context";
 
-function UploadJson() {
+function UploadJson(): JSX.Element {
   const { savePolygon } = useContext(MyPolygonsContext);
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     const fileReader = new FileReader();
     fileReader.readAsText(e.target.files[0], "UTF-8");
-    fileReader.onload = (e) => {
+    fileReader.onload = (e: any) => {
       try {
         savePolygon(JSON.parse(e.target.result));
       } catch {
