@@ -44,7 +44,7 @@ export default function PolygonCard(props: PolygonCardProps): JSX.Element {
             marginTop: "auto",
           }}
           onClick={() => {
-            Downloader(props.Mypolygon, props.Mypolygon.id);
+            Downloader(props.Mypolygon, "Polygon_ID_" + props.Mypolygon.id);
           }}
         >
           Export TO JSON
