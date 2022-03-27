@@ -5,13 +5,11 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { StyledPolygonCard } from "./PolygonCardStyle";
 import { Polygon } from "../../../../Types/Types";
-import { Link } from "react-router-dom";
+import { Downloader } from "../../../FileManagement/file";
 
 interface PolygonCardProps {
   Mypolygon: Polygon;
 }
-
-let url = `${process.env.PUBLIC_URL}/manifest.json`;
 
 export default function PolygonCard(props: PolygonCardProps): JSX.Element {
   const { Year, Month, Day, Hour, Minutes } = props.Mypolygon.dateTime;
@@ -41,6 +39,9 @@ export default function PolygonCard(props: PolygonCardProps): JSX.Element {
             backgroundColor: "green",
             width: "100%",
             marginTop: "auto",
+          }}
+          onClick={() => {
+            Downloader(props.Mypolygon, props.Mypolygon.id);
           }}
         >
           Export TO JSON

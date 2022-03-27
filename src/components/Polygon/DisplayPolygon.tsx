@@ -1,6 +1,5 @@
 import { Button } from "@material-ui/core";
 import React, { memo, useContext, useState } from "react";
-import { useLocation } from "react-router-dom";
 import { MyPolygonsContext } from "../../Context/Context";
 
 import usePolygon from "../../Hooks/usePolygon";
@@ -41,7 +40,7 @@ function DisplayPolygon(): JSX.Element {
           }}
           onClick={resetPolygon}
         >
-          Reset
+          New Polygon
         </Button>
         <Button
           variant="outlined"
@@ -53,7 +52,6 @@ function DisplayPolygon(): JSX.Element {
           onClick={() => {
             polygon.image = imageUrl;
             savePolygon(polygon);
-            resetPolygon();
           }}
         >
           Save

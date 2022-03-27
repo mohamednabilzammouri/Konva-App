@@ -1,5 +1,6 @@
 import { Routes, BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
+import { Downloader } from "./components/FileManagement/file";
 import Footer from "./components/Layout/Footer/Footer";
 import Header from "./components/Layout/Header/Header";
 import DisplayPolygon from "./components/Polygon/DisplayPolygon";

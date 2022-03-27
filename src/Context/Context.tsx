@@ -1,13 +1,13 @@
 import { createContext, useState } from "react";
+import { Downloader } from "../components/FileManagement/file";
 import { Polygon } from "../Types/Types";
-import { Stage } from "react-konva";
 
-interface ContextInit {
+interface MyPolygonsContextInit {
   polygons?: Polygon[];
   savePolygon?: any;
 }
 
-export const MyPolygonsContext = createContext<ContextInit>({});
+export const MyPolygonsContext = createContext<MyPolygonsContextInit>({});
 
 export function MyPolygonsContextProvider(props: any) {
   const [polygons, setPolygons] = useState<Polygon[]>([]);
@@ -24,10 +24,10 @@ export function MyPolygonsContextProvider(props: any) {
       };
 
       setPolygons([...polygons, poly]);
-      alert(poly.id);
+      alert("ID : " + poly.id + " Successfully Saved");
       return;
     }
-    alert("nein");
+    alert("You need at least 2 points to save");
   };
 
   return (

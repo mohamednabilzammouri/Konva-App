@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Layer, Line, Stage } from "react-konva";
 import { Polygon } from "../../Types/Types";
 import DisplayRect from "../Konva/DisplayRect";
+import Success from "../Notifications/Success";
 
 interface PlygonProps {
   polygonData: {

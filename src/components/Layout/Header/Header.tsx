@@ -6,7 +6,7 @@ function Header() {
   return (
     <div className="header">
       <Link to="/">
-        <Button style={{ color: "white" }}> New Polygon</Button>
+        <Button style={{ color: "white" }}> Draw Board </Button>
       </Link>
       <Link to="/mypolygons">
         <Button style={{ color: "white" }}>My Polygons</Button>
