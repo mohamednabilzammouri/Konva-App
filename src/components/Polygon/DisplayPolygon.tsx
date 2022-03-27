@@ -1,5 +1,6 @@
 import { Button } from "@material-ui/core";
-import { useContext, useState } from "react";
+import React, { memo, useContext, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { MyPolygonsContext } from "../../Context/Context";
 
 import usePolygon from "../../Hooks/usePolygon";

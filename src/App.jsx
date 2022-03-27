@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Routes, BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 import Footer from "./components/Layout/Footer/Footer";

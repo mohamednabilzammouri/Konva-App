@@ -1,6 +1,13 @@
-import { useState } from "react";
+import React, { useContext, useMemo, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { POLYGON_INITIAL_STATE } from "../Constants/Constants";
+import { MyPolygonsContext } from "../Context/Context";
 import { Polygon } from "../Types/Types";
+
+function useQuery() {
+  const { search } = useLocation();
+  return React.useMemo(() => new URLSearchParams(search), [search]);
+}
 
 function usePolygon(CurrentPolygon: Polygon = POLYGON_INITIAL_STATE) {
   const [polygon, setPolygon] = useState<Polygon>(CurrentPolygon);
