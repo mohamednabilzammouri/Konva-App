@@ -1,6 +1,16 @@
 import { Rect } from "react-konva";
+import { Polygon } from "../../Types/Types";
 
-function DisplayRect(props) {
+interface DisplayRectProps {
+  polygonProps: {
+    polygon: Polygon;
+    handleMouseOverStartPoint: any;
+    handleMouseOutStartPoint: any;
+    handleDragMovePoint: any;
+  };
+}
+
+function DisplayRect(props: DisplayRectProps) {
   const {
     polygon,
     handleMouseOverStartPoint,
@@ -9,7 +19,7 @@ function DisplayRect(props) {
   } = props.polygonProps;
   return (
     <>
-      {polygon.points.map((point, index) => {
+      {polygon.points.map((point: number[], index: number) => {
         const width = 6;
         const x = point[0] - width / 2;
         const y = point[1] - width / 2;
