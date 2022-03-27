@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { MyPolygonsContext } from "../../../../Context/Context";
 import { Polygon } from "../../../../Types/Types";
+import UploadJson from "../../../FileManagement/UploadJson";
 import PolygonCard from "../PolygonCard/PolygonCard";
 import { StyledPolygons } from "./DIsplayPolygonCardsStyle";
 
@@ -9,6 +10,8 @@ function DisplayPolygonCards(): JSX.Element {
 
   return (
     <StyledPolygons>
+      <UploadJson />
+
       {polygons?.map((polygon: Polygon) => (
         <PolygonCard Mypolygon={polygon} />
       ))}

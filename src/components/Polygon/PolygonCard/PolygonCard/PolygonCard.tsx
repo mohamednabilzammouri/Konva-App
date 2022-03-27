@@ -5,7 +5,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { StyledPolygonCard } from "./PolygonCardStyle";
 import { Polygon } from "../../../../Types/Types";
-import { Downloader } from "../../../FileManagement/file";
+import { Downloader } from "../../../FileManagement/ExportJson";
 
 interface PolygonCardProps {
   Mypolygon: Polygon;
@@ -28,7 +28,10 @@ export default function PolygonCard(props: PolygonCardProps): JSX.Element {
           </h3>
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          <h3>Last Updated : {CreationDate}</h3>
+          <h3>Creation Date : {CreationDate}</h3>
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          <h3>Points Drawn : {props.Mypolygon.points.length}</h3>
         </Typography>
       </CardContent>
       <CardActions>

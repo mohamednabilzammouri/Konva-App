@@ -1,5 +1,4 @@
 import { createContext, useState } from "react";
-import { Downloader } from "../components/FileManagement/file";
 import { Polygon } from "../Types/Types";
 
 interface MyPolygonsContextInit {
@@ -25,6 +24,8 @@ export function MyPolygonsContextProvider(props: any) {
 
       setPolygons([...polygons, poly]);
       alert("ID : " + poly.id + " Successfully Saved");
+      console.log(poly);
+
       return;
     }
     alert("You need at least 2 points to save");
