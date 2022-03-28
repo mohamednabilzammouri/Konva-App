@@ -13,11 +13,7 @@ function UploadJson(): JSX.Element {
     const fileReader = new FileReader();
     fileReader.readAsText(e.target.files[0], "UTF-8");
     fileReader.onload = (e: any) => {
-      try {
-        savePolygon(JSON.parse(e.target.result));
-      } catch {
-        alert("Your File is Invalid");
-      }
+      savePolygon(JSON.parse(e.target.result));
     };
   };
   return (

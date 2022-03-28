@@ -1,9 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { POLYGON_INITIAL_STATE } from "../Constants/Constants";
 import { Polygon } from "../Types/Types";
+import { useLocalStorage } from "./useLocalStorage";
 
 function usePolygon(CurrentPolygon: Polygon = POLYGON_INITIAL_STATE) {
   const [polygon, setPolygon] = useState<Polygon>(CurrentPolygon);
+  const [storedValue, setValue] = useLocalStorage("CurrentPolygon", polygon);
+  useEffect(() => {
+    if (polygon.points.length === 0 && storedValue) {
+      setPolygon(storedValue);
+    }
+  }, []);
 
   const resetPolygon = () => {
     setPolygon(POLYGON_INITIAL_STATE);
@@ -25,9 +32,12 @@ function usePolygon(CurrentPolygon: Polygon = POLYGON_INITIAL_STATE) {
 
     if (polygon.isMouseOverStartPoint && polygon.points.length >= 3) {
       setPolygon({ ...polygon, isFinished: true });
+      setValue({ ...polygon, isFinished: true });
+
       return;
     }
     setPolygon({ ...polygon, points: [...polygon.points, mousePos] });
+    setValue({ ...polygon, points: [...polygon.points, mousePos] });
   };
 
   const handleMouseMove = (event: any) => {

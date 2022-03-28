@@ -11,7 +11,13 @@ export const MyPolygonsContext = createContext<MyPolygonsContextInit>({});
 
 export function MyPolygonsContextProvider(props: any) {
   const [polygons, setPolygons] = useState<Polygon[]>([]);
-  const [storedValue, setValue] = useLocalStorage("MyPolygons", polygons);
+  const [storedPolygons, setPolygon] = useLocalStorage("MyPolygons", polygons);
+  const [currentPolygon, setCurrentPolygon] = useLocalStorage(
+    "CurrentPolygon",
+    ""
+  );
+
+  if (polygons.length === 0) setPolygons(storedPolygons);
 
   const savePolygon = (poly: Polygon) => {
     if (poly.points.length > 1) {
@@ -25,7 +31,8 @@ export function MyPolygonsContextProvider(props: any) {
       };
 
       setPolygons([...polygons, poly]);
-      setValue([...polygons, poly]);
+      setPolygon([...polygons, poly]);
+      setCurrentPolygon("");
 
       alert("ID : " + poly.id + " Successfully Saved");
       console.log(poly);
