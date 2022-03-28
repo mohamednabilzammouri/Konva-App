@@ -1,5 +1,6 @@
 import { Button } from "@material-ui/core";
 import React, { memo, useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import { MyPolygonsContext } from "../../Context/Context";
 
 import usePolygon from "../../Hooks/usePolygon";
@@ -32,17 +33,19 @@ function DisplayPolygon(): JSX.Element {
           zIndex: "100",
         }}
       >
-        <Button
-          variant="outlined"
-          style={{
-            color: "white",
-            backgroundColor: "red",
-            margin: "1em",
-          }}
-          onClick={resetPolygon}
-        >
-          New Polygon
-        </Button>
+        <Link to={"/"}>
+          <Button
+            variant="outlined"
+            style={{
+              color: "white",
+              backgroundColor: "red",
+              margin: "1em",
+            }}
+            onClick={resetPolygon}
+          >
+            New Polygon
+          </Button>
+        </Link>
         <Button
           variant="outlined"
           style={{

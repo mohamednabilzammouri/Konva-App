@@ -63,7 +63,7 @@ export default function PolygonCard(props: PolygonCardProps): JSX.Element {
               width: "100%",
             }}
           >
-            Edit Polygon
+            Copy & Edit
           </Button>
         </Link>
       </CardActions>
