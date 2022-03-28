@@ -1,6 +1,7 @@
 import { Button } from "@material-ui/core";
 import React, { memo, useContext, useState } from "react";
 import { MyPolygonsContext } from "../../Context/Context";
+import { useLocalStorage } from "../../Hooks/useLocalStorage";
 
 import usePolygon from "../../Hooks/usePolygon";
 import DrawPolygon from "./Polygon";
@@ -16,9 +17,10 @@ function DisplayPolygon(): JSX.Element {
     handleDragMovePoint,
     resetPolygon,
   } = usePolygon();
-  const [imageUrl, setImageUrl] = useState<string>();
-  const saveImage = (e: any) => {
-    setImageUrl(e);
+  const [imageRef, setImageRef] = useState<any>();
+
+  const saveImageRef = (e: any) => {
+    setImageRef(e);
   };
 
   const { savePolygon } = useContext(MyPolygonsContext);
@@ -50,8 +52,10 @@ function DisplayPolygon(): JSX.Element {
             margin: "1em",
           }}
           onClick={() => {
-            polygon.image = imageUrl;
+            polygon.image = imageRef.current?.toDataURL();
             savePolygon(polygon);
+
+            resetPolygon();
           }}
         >
           Save
@@ -66,7 +70,7 @@ function DisplayPolygon(): JSX.Element {
           handleClick,
           handleMouseOutStartPoint,
           handleDragMovePoint,
-          saveImage,
+          saveImageRef,
         }}
       />
     </>

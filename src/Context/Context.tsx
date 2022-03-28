@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { useLocalStorage } from "../Hooks/useLocalStorage";
 import { Polygon } from "../Types/Types";
 
 interface MyPolygonsContextInit {
@@ -10,6 +11,7 @@ export const MyPolygonsContext = createContext<MyPolygonsContextInit>({});
 
 export function MyPolygonsContextProvider(props: any) {
   const [polygons, setPolygons] = useState<Polygon[]>([]);
+  const [storedValue, setValue] = useLocalStorage("MyPolygons", polygons);
 
   const savePolygon = (poly: Polygon) => {
     if (poly.points.length > 1) {
@@ -23,6 +25,8 @@ export function MyPolygonsContextProvider(props: any) {
       };
 
       setPolygons([...polygons, poly]);
+      setValue([...polygons, poly]);
+
       alert("ID : " + poly.id + " Successfully Saved");
       console.log(poly);
 

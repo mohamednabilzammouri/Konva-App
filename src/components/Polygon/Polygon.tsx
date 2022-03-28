@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Layer, Line, Stage } from "react-konva";
+import { useLocalStorage } from "../../Hooks/useLocalStorage";
 import { Polygon } from "../../Types/Types";
 import DisplayRect from "../Konva/DisplayRect";
 import Success from "../Notifications/Success";
@@ -13,16 +14,16 @@ interface PlygonProps {
     handleClick: any;
     handleMouseOutStartPoint: any;
     handleDragMovePoint: any;
-    saveImage: any;
+    saveImageRef: any;
   };
 }
 
 function DrawPolygon(props: PlygonProps): JSX.Element {
   let stageRef = React.useRef<any>(null);
-  let imageUrl = stageRef.current?.toDataURL();
   useEffect(() => {
-    saveImage(imageUrl);
-  }, [imageUrl]);
+    saveImageRef(stageRef);
+    console.log(stageRef);
+  }, []);
 
   const {
     flattenedPoints,
@@ -32,7 +33,7 @@ function DrawPolygon(props: PlygonProps): JSX.Element {
     handleClick,
     handleMouseOutStartPoint,
     handleDragMovePoint,
-    saveImage,
+    saveImageRef,
   } = props.polygonData;
   return (
     <div className="background">
