@@ -1,7 +1,6 @@
 import { Button } from "@material-ui/core";
 import React, { memo, useContext, useState } from "react";
 import { MyPolygonsContext } from "../../Context/Context";
-import { useLocalStorage } from "../../Hooks/useLocalStorage";
 
 import usePolygon from "../../Hooks/usePolygon";
 import DrawPolygon from "./Polygon";
@@ -54,7 +53,6 @@ function DisplayPolygon(): JSX.Element {
           onClick={() => {
             polygon.image = imageRef.current?.toDataURL();
             savePolygon(polygon);
-
             resetPolygon();
           }}
         >

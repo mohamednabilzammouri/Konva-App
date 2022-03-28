@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Layer, Line, Stage } from "react-konva";
-import { useLocalStorage } from "../../Hooks/useLocalStorage";
 import { Polygon } from "../../Types/Types";
 import DisplayRect from "../Konva/DisplayRect";
 import Success from "../Notifications/Success";

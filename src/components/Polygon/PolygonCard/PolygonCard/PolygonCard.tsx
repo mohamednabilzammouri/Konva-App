@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import { StyledPolygonCard } from "./PolygonCardStyle";
 import { Polygon } from "../../../../Types/Types";
 import { Downloader } from "../../../FileManagement/ExportJson";
+import { Link } from "react-router-dom";
 
 interface PolygonCardProps {
   Mypolygon: Polygon;
@@ -40,7 +41,7 @@ export default function PolygonCard(props: PolygonCardProps): JSX.Element {
           style={{
             color: "white",
             backgroundColor: "green",
-            width: "100%",
+            width: "50%",
             marginTop: "auto",
           }}
           onClick={() => {
@@ -49,6 +50,22 @@ export default function PolygonCard(props: PolygonCardProps): JSX.Element {
         >
           Export TO JSON
         </Button>
+        <Link
+          to={`/?id=${props.Mypolygon.id}`}
+          style={{ textDecoration: "none" }}
+        >
+          <Button
+            size="small"
+            style={{
+              marginLeft: "1em",
+              color: "white",
+              backgroundColor: "green",
+              width: "100%",
+            }}
+          >
+            Edit Polygon
+          </Button>
+        </Link>
       </CardActions>
     </StyledPolygonCard>
   );

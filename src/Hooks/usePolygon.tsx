@@ -2,28 +2,27 @@ import { useEffect, useState } from "react";
 import { POLYGON_INITIAL_STATE } from "../Constants/Constants";
 import { Polygon } from "../Types/Types";
 import { isIntersects } from "../Utils/isIntersect";
+import { GetPolygonFromUrl, useQuery } from "./useGetPolygonFromQuery";
 import { useLocalStorage } from "./useLocalStorage";
 
-function usePolygon(CurrentPolygon: Polygon = POLYGON_INITIAL_STATE) {
-  const [polygon, setPolygon] = useState<Polygon>(CurrentPolygon);
+function usePolygon() {
+  const EditablePolygon = GetPolygonFromUrl();
+  const [polygon, setPolygon] = useState<Polygon>(POLYGON_INITIAL_STATE);
   const [storedValue, setValue] = useLocalStorage("CurrentPolygon", polygon);
+  let query = useQuery();
 
-  const handleKeyDown = (event: any) => {
-    event.preventDefault();
-    let charCode = String.fromCharCode(event.which).toLowerCase();
-    if ((event.ctrlKey || event.metaKey) && charCode === "s") {
-      alert("CTRL+S Pressed");
-    } else if ((event.ctrlKey || event.metaKey) && charCode === "c") {
-      alert("CTRL+C Pressed");
-    } else if ((event.ctrlKey || event.metaKey) && charCode === "v") {
-      alert("CTRL+V Pressed");
-    }
-  };
   useEffect(() => {
-    if (polygon.points.length === 0 && storedValue) {
-      setPolygon(storedValue);
+    if (query.get("id") !== null) {
+      if (storedValue.id == EditablePolygon.id) setPolygon(storedValue);
+      else {
+        setPolygon(EditablePolygon);
+      }
+    } else {
+      if (polygon.points.length === 0 && storedValue) {
+        setPolygon(storedValue);
+      }
     }
-  }, []);
+  }, [EditablePolygon]);
   const resetPolygon = () => {
     setPolygon(POLYGON_INITIAL_STATE);
     setValue(POLYGON_INITIAL_STATE);
@@ -70,8 +69,6 @@ function usePolygon(CurrentPolygon: Polygon = POLYGON_INITIAL_STATE) {
     }
     setPolygon({ ...polygon, points: [...polygon.points, mousePos] });
     setValue({ ...polygon, points: [...polygon.points, mousePos] });
-    console.log(polygon.points);
-    console.log(mousePos);
   };
 
   const handleMouseMove = (event: any) => {
@@ -123,7 +120,6 @@ function usePolygon(CurrentPolygon: Polygon = POLYGON_INITIAL_STATE) {
     handleSavePolygon,
     resetPolygon,
     getRef,
-    handleKeyDown,
   };
 }
 
