@@ -8,6 +8,17 @@ function usePolygon(CurrentPolygon: Polygon = POLYGON_INITIAL_STATE) {
   const [polygon, setPolygon] = useState<Polygon>(CurrentPolygon);
   const [storedValue, setValue] = useLocalStorage("CurrentPolygon", polygon);
 
+  const handleKeyDown = (event: any) => {
+    event.preventDefault();
+    let charCode = String.fromCharCode(event.which).toLowerCase();
+    if ((event.ctrlKey || event.metaKey) && charCode === "s") {
+      alert("CTRL+S Pressed");
+    } else if ((event.ctrlKey || event.metaKey) && charCode === "c") {
+      alert("CTRL+C Pressed");
+    } else if ((event.ctrlKey || event.metaKey) && charCode === "v") {
+      alert("CTRL+V Pressed");
+    }
+  };
   useEffect(() => {
     if (polygon.points.length === 0 && storedValue) {
       setPolygon(storedValue);
@@ -15,6 +26,7 @@ function usePolygon(CurrentPolygon: Polygon = POLYGON_INITIAL_STATE) {
   }, []);
   const resetPolygon = () => {
     setPolygon(POLYGON_INITIAL_STATE);
+    setValue(POLYGON_INITIAL_STATE);
   };
 
   const getMousePosition = (stage: any) => {
@@ -83,7 +95,6 @@ function usePolygon(CurrentPolygon: Polygon = POLYGON_INITIAL_STATE) {
     const points = polygon.points;
     const index = event.target.index - 1;
     const pos = [event.target.attrs.x, event.target.attrs.y];
-    console.log("index ", index, "POS :", pos);
 
     setPolygon({
       ...polygon,
@@ -112,6 +123,7 @@ function usePolygon(CurrentPolygon: Polygon = POLYGON_INITIAL_STATE) {
     handleSavePolygon,
     resetPolygon,
     getRef,
+    handleKeyDown,
   };
 }
 

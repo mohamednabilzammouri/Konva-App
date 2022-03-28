@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Layer, Line, Stage } from "react-konva";
 import { useLocalStorage } from "../../Hooks/useLocalStorage";
 import { Polygon } from "../../Types/Types";
@@ -19,6 +19,32 @@ interface PlygonProps {
 }
 
 function DrawPolygon(props: PlygonProps): JSX.Element {
+  const [stage, setStage] = useState({
+    stageScale: 1,
+    stageX: 0,
+    stageY: 0,
+  });
+  const handleWheel = (e: any) => {
+    e.evt.preventDefault();
+
+    const scaleBy = 1.02;
+    const stage = e.target.getStage();
+    const oldScale = stage.scaleX();
+    const mousePointTo = {
+      x: stage.getPointerPosition().x / oldScale - stage.x() / oldScale,
+      y: stage.getPointerPosition().y / oldScale - stage.y() / oldScale,
+    };
+
+    const newScale = e.evt.deltaY > 0 ? oldScale * scaleBy : oldScale / scaleBy;
+
+    setStage({
+      stageScale: newScale,
+      stageX:
+        -(mousePointTo.x - stage.getPointerPosition().x / newScale) * newScale,
+      stageY:
+        -(mousePointTo.y - stage.getPointerPosition().y / newScale) * newScale,
+    });
+  };
   let stageRef = React.useRef<any>(null);
   useEffect(() => {
     saveImageRef(stageRef);
@@ -42,6 +68,11 @@ function DrawPolygon(props: PlygonProps): JSX.Element {
         onMouseDown={handleClick}
         onMouseMove={handleMouseMove}
         ref={stageRef}
+        stageX={stage.stageX}
+        stageY={stage.stageY}
+        scaleX={stage.stageScale}
+        scaleY={stage.stageScale}
+        onWheel={handleWheel}
       >
         <Layer>
           <Line
