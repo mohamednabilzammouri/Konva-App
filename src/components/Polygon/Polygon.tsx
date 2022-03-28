@@ -22,7 +22,6 @@ function DrawPolygon(props: PlygonProps): JSX.Element {
   let stageRef = React.useRef<any>(null);
   useEffect(() => {
     saveImageRef(stageRef);
-    console.log(stageRef);
   }, []);
 
   const {
