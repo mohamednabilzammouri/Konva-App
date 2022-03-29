@@ -6,4 +6,5 @@ display: flex;
 flex-wrap: wrap;
 flex-shrink: 1;
 padding-bottom: 10vh;
+background-color: #2D2F37;
 `

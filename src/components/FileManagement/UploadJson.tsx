@@ -37,7 +37,10 @@ function UploadJson(): JSX.Element {
           <Button
             variant="contained"
             component="span"
-            style={{ backgroundColor: "green", width: "100%" }}
+            style={{
+              backgroundColor: "#158EFD",
+              width: "100%",
+            }}
           >
             Upload
           </Button>

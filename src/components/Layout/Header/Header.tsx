@@ -1,23 +1,19 @@
-import { Button } from "@material-ui/core";
-import { Link, BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { logoUrl } from "../../../Styles/ExternalFiles";
+import { HeaderButton, Logo, StyledHeader } from "./HeaderStyle";
 
 function Header() {
-  console.log("header rendered");
   return (
-    <div className="header">
+    <StyledHeader>
       <Link to="/">
-        <Button style={{ color: "white" }}> Draw Board </Button>
+        <HeaderButton> Draw Board </HeaderButton>
       </Link>
       <Link to="/mypolygons">
-        <Button style={{ color: "white" }}>My Polygons</Button>
+        <HeaderButton>My Polygons</HeaderButton>
       </Link>
 
-      <img
-        src="https://hasty.ai/assets/images/hasty-logo.svg"
-        className="header-title"
-        style={{ marginRight: "5%" }}
-      ></img>
-    </div>
+      <Logo src={logoUrl}></Logo>
+    </StyledHeader>
   );
 }
 

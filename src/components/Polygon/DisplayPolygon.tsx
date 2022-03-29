@@ -1,10 +1,14 @@
-import { Button } from "@material-ui/core";
-import React, { memo, useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { MyPolygonsContext } from "../../Context/Context";
 
 import usePolygon from "../../Hooks/usePolygon";
 import DrawPolygon from "./Polygon";
+import {
+  NewPolygonButton,
+  SaveNewContainer,
+  SavePolygonButton,
+} from "./PolygonCard/PolygonList/DisplayPolygonStyle";
 
 function DisplayPolygon(): JSX.Element {
   const {
@@ -27,32 +31,15 @@ function DisplayPolygon(): JSX.Element {
 
   return (
     <>
-      <div
-        style={{
-          position: "absolute",
-          zIndex: "100",
-        }}
-      >
+      <SaveNewContainer>
+        {" "}
         <Link to={"/"}>
-          <Button
-            variant="outlined"
-            style={{
-              color: "white",
-              backgroundColor: "red",
-              margin: "1em",
-            }}
-            onClick={resetPolygon}
-          >
+          <NewPolygonButton variant="outlined" onClick={resetPolygon}>
             New Polygon
-          </Button>
+          </NewPolygonButton>
         </Link>
-        <Button
+        <SavePolygonButton
           variant="outlined"
-          style={{
-            color: "white",
-            backgroundColor: "green",
-            margin: "1em",
-          }}
           onClick={() => {
             polygon.image = imageRef.current?.toDataURL();
             savePolygon(polygon);
@@ -60,8 +47,9 @@ function DisplayPolygon(): JSX.Element {
           }}
         >
           Save
-        </Button>
-      </div>
+        </SavePolygonButton>
+      </SaveNewContainer>
+
       <DrawPolygon
         polygonData={{
           flattenedPoints,

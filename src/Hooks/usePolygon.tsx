@@ -13,7 +13,7 @@ function usePolygon() {
 
   useEffect(() => {
     if (query.get("id") !== null) {
-      if (storedValue.id == EditablePolygon.id) setPolygon(storedValue);
+      if (storedValue.id === EditablePolygon.id) setPolygon(storedValue);
       else {
         setPolygon(EditablePolygon);
       }

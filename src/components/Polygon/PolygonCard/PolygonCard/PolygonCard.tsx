@@ -1,9 +1,12 @@
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { StyledPolygonCard } from "./PolygonCardStyle";
+import {
+  CopyEditButton,
+  ExportToJsonButton,
+  StyledPolygonCard,
+} from "./PolygonCardStyle";
 import { Polygon } from "../../../../Types/Types";
 import { Downloader } from "../../../FileManagement/ExportJson";
 import { Link } from "react-router-dom";
@@ -12,59 +15,40 @@ interface PolygonCardProps {
   Mypolygon: Polygon;
 }
 
-export default function PolygonCard(props: PolygonCardProps): JSX.Element {
-  const { Year, Month, Day, Hour, Minutes } = props.Mypolygon.dateTime;
+export default function PolygonCard({
+  Mypolygon,
+}: PolygonCardProps): JSX.Element {
+  const { Year, Month, Day, Hour, Minutes } = Mypolygon.dateTime;
+  const { image, id, isFinished, points } = Mypolygon;
   const CreationDate =
     Year + "/" + Month + "/" + Day + "/" + Hour + ":" + Minutes;
   return (
     <StyledPolygonCard>
-      <CardMedia component="img" image={props.Mypolygon.image} />
+      <CardMedia component="img" image={image} />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           <h3>
-            ID : {props.Mypolygon.id}{" "}
-            <span>
-              {props.Mypolygon.isFinished ? "Finished" : "Unfinished"}
-            </span>
+            ID : {id} <span>{isFinished ? "Finished" : "Unfinished"}</span>
           </h3>
         </Typography>
         <Typography variant="body2" color="text.secondary">
           <h3>Creation Date : {CreationDate}</h3>
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          <h3>Points Drawn : {props.Mypolygon.points.length}</h3>
+          <h3>Points Drawn : {points.length}</h3>
         </Typography>
       </CardContent>
       <CardActions>
-        <Button
+        <ExportToJsonButton
           size="small"
-          style={{
-            color: "white",
-            backgroundColor: "green",
-            width: "50%",
-            marginTop: "auto",
-          }}
           onClick={() => {
-            Downloader(props.Mypolygon, "Polygon_ID_" + props.Mypolygon.id);
+            Downloader(Mypolygon, "Polygon_ID_" + id);
           }}
         >
           Export TO JSON
-        </Button>
-        <Link
-          to={`/?id=${props.Mypolygon.id}`}
-          style={{ textDecoration: "none" }}
-        >
-          <Button
-            size="small"
-            style={{
-              marginLeft: "1em",
-              color: "white",
-              backgroundColor: "green",
-              width: "100%",
-            }}
-          >
-            Copy & Edit
-          </Button>
+        </ExportToJsonButton>
+        <Link to={`/?id=${id}`} style={{ textDecoration: "none" }}>
+          <CopyEditButton size="small">Copy & Edit</CopyEditButton>
         </Link>
       </CardActions>
     </StyledPolygonCard>

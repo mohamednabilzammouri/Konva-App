@@ -1,13 +1,11 @@
-import React from "react";
+import { StyledFooter } from "./FooterStyle";
 
 function Footer() {
-  console.log("footer rendered");
-
   return (
-    <div className="footer">
+    <StyledFooter>
       © {new Date().getFullYear()} Hasty GmbH Assesment. By Mohamed nabil
       Zammouri
-    </div>
+    </StyledFooter>
   );
 }
 

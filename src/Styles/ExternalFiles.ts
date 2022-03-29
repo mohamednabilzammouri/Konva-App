@@ -1,0 +1,1 @@
+export const logoUrl = "https://hasty.ai/assets/images/hasty-logo.svg"

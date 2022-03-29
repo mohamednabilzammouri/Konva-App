@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Layer, Line, Stage } from "react-konva";
+import { Drawerbackground } from "../../Styles/SquareBackground";
 import { Polygon } from "../../Types/Types";
 import DisplayRect from "../Konva/DisplayRect";
 import Success from "../Notifications/Success";
@@ -60,7 +61,7 @@ function DrawPolygon(props: PlygonProps): JSX.Element {
     saveImageRef,
   } = props.polygonData;
   return (
-    <div className="background">
+    <Drawerbackground>
       <Stage
         width={window.innerWidth}
         height={window.innerHeight * 0.85}
@@ -90,7 +91,7 @@ function DrawPolygon(props: PlygonProps): JSX.Element {
           />
         </Layer>
       </Stage>
-    </div>
+    </Drawerbackground>
   );
 }
 
