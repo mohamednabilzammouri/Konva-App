@@ -32,7 +32,6 @@ function DisplayPolygon(): JSX.Element {
   return (
     <>
       <SaveNewContainer>
-        {" "}
         <Link to={"/"}>
           <NewPolygonButton variant="outlined" onClick={resetPolygon}>
             New Polygon
